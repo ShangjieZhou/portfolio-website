@@ -1,0 +1,161 @@
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ivory;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li {
+    margin: 0;
+    font-family: system-ui;
+  }
+}
+
+#main-theme {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#interface {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  #entrance-hint {
+    animation: blinking 2s ease-out infinite;
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    height: 10rem;
+    align-items: center;
+    top: 80vh;
+    img {
+      width: 4rem;
+      margin: 0 1rem;
+    }
+  }
+
+  #content-table {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    & ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .foldable {
+      padding-bottom: 0.4rem;
+      border-radius: 0.4rem;
+      background-color: rgba(208, 208, 208, 0.9);
+      height: 14rem;
+      overflow-y: scroll;
+      transition: height 0.3s ease-out;
+
+      &.fold {
+        height: 2.4rem;
+        overflow-y: hidden;
+      }
+    }
+
+    #fold-btn {
+      border-bottom-left-radius: 0.4rem;
+      border-bottom-right-radius: 0.4rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    h1 {
+      background-color: rgb(198, 198, 198);
+      padding: 0 1rem;
+      font-size: 1.2rem;
+      border-radius: 0.4rem;
+      line-height: 2.4rem;
+    }
+
+    p {
+      font-size: 1rem;
+      padding: 0 1rem;
+      line-height: 2rem;
+      cursor: pointer;
+
+      &.highlight {
+        color: white;
+        font-weight: 800;
+        background-color: antiquewhite;
+      }
+    }
+
+    button {
+      width: 30%;
+      height: 1.6rem;
+      background-color: rgba(168, 168, 168, 0.9);
+      border: none;
+      padding: 0;
+    }
+
+    .experience {
+      color: mediumpurple;
+    }
+
+    .education {
+      color: #ea4d82;
+    }
+  }
+}
+
+.section-detail {
+  width: 150px;
+  height: 150px;
+  padding: 6px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .features {
+    display: flex;
+    column-gap: 4px;
+    row-gap: 4px;
+    flex-wrap: wrap;
+    h3 {
+      font-weight: 400;
+      font-size: 10px;
+      padding: 4px;
+      border: solid 1px;
+      width: fit-content;
+    }
+  }
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

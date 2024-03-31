@@ -1,4 +1,4 @@
-import "./SectionDetail.scss";
+import "../style.scss";
 
 export default function SectionDetail({ title, dotpoints }) {
   return (

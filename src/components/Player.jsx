@@ -1,31 +1,21 @@
 import { RigidBody } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePlayerCurrentSection } from "../features/gallery/gallerySlice";
+import { SUBSECTION } from "../features/gallery/gallerySlice";
 
 const SPEED = 0.3;
-const ROTATE = 0.1;
-const NONEVECTOR = new THREE.Vector2(0, 0);
+const BUFFER = 1.5;
 
-const forwardMap = {
-  true: new THREE.Vector2(0, -1),
-  false: NONEVECTOR,
-};
-
-const rightMap = {
-  true: new THREE.Vector2(1, 0),
-  false: NONEVECTOR,
-};
-
-const backwardMap = {
-  true: new THREE.Vector2(0, 1),
-  false: NONEVECTOR,
-};
-
-const leftMap = {
-  true: new THREE.Vector2(-1, 0),
-  false: NONEVECTOR,
+const sideMap = {
+  START: 0,
+  BUKA: -1,
+  NAVBIT: 1,
+  UNI: -1,
+  HIGHSCHOOL: 1,
 };
 
 export default function Player({ walls }) {
@@ -33,8 +23,14 @@ export default function Player({ walls }) {
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const [smoothedCameraPosition] = useState(() => new THREE.Vector3());
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
+  const playerDepth = useSelector((state) => state.gallery.playerPosition);
+  const dispatch = useDispatch();
 
   useFrame((state, delta) => {
+    if (body.current === null) {
+      return;
+    }
+
     // controls
     const { forward, backward, leftward, rightward } = getKeys();
     const tar = new THREE.Vector3();
@@ -64,11 +60,22 @@ export default function Player({ walls }) {
 
     // switch camera angle when near a display section
     body.current.setLinearDamping(0.5);
-    for (let wall of walls) {
-      if (Math.abs(bodyPosition.z - wall) < 1.5) {
-        cameraPosition = new THREE.Vector3(3, 0.85, wall);
-        cameraTarget = new THREE.Vector3(-1, 1, wall);
-        body.current.setLinearDamping(5); // slow down the ball
+
+    for (const [key, value] of Object.entries(SUBSECTION)) {
+      const start = value[0] + BUFFER - bodyPosition.z;
+      const end = bodyPosition.z - value.at(-1) + BUFFER;
+      if (
+        start > 0 &&
+        end > 0 &&
+        ((sideMap[key] === 1 && bodyPosition.x > 0) ||
+          (sideMap[key] === -1 && bodyPosition.x < 0))
+      ) {
+        const camPosX = sideMap[key] * -2.8;
+        const camTargetX = sideMap[key] * 1.5;
+        const camZ = Math.max(value.at(-1), Math.min(bodyPosition.z, value[0]));
+        cameraPosition = new THREE.Vector3(camPosX, 0.85, camZ);
+        cameraTarget = new THREE.Vector3(camTargetX, 1, camZ);
+        body.current.setLinearDamping(4); // slow down the ball
         break;
       }
     }
@@ -78,6 +85,8 @@ export default function Player({ walls }) {
 
     state.camera.position.copy(smoothedCameraPosition);
     state.camera.lookAt(smoothedCameraTarget);
+
+    dispatch(updatePlayerCurrentSection(bodyPosition.z));
   });
 
   const calcMovement = (
@@ -124,14 +133,13 @@ export default function Player({ walls }) {
       friction={1}
       restitution={0.2}
       ref={body}
-      position={[0, 1, -3]}
+      position={[0, 1, playerDepth]}
       colliders="ball"
       canSleep={false}
     >
       <mesh castShadow>
         <icosahedronGeometry args={[0.2, 1]} />
         <meshStandardMaterial flatShading color="#DDDDDD" />
-        {/* <meshStandardMaterial flatShading color="white" /> */}
       </mesh>
     </RigidBody>
   );

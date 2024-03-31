@@ -1,0 +1,53 @@
+.education-section {
+  img {
+    width: 76px;
+  }
+
+  .school-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 8px;
+    margin-top: 8px;
+
+    .school-subtitle {
+      margin-left: 12px;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        font-weight: 500;
+        font-size: 11px;
+      }
+
+      a {
+        font-weight: 800;
+        font-style: italic;
+        font-size: 10px;
+        color: white;
+        text-decoration: none;
+      }
+
+      h4 {
+        line-height: 12px;
+        font-weight: 400;
+        font-size: 8px;
+      }
+    }
+  }
+
+  #grad {
+    margin-top: 28px;
+    width: 90px;
+  }
+
+  ul {
+    padding: 0;
+    margin-left: 12px;
+    margin-top: 6px;
+
+    li {
+        font-size: 9px;
+    }
+  }
+}

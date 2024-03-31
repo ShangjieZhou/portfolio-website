@@ -1,4 +1,4 @@
-import { Html } from "@react-three/drei";
+import { Html, SpotLight } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 const THICKNESS = 0.1;
@@ -14,7 +14,7 @@ export default function Wall({
 }) {
   const getX = () => (onLeft ? galleryWidth / -2 : galleryWidth / 2);
   const getOrientation = () => (onLeft ? Math.PI : 0);
-  const getDepth = () => (onLeft ? -1 * THICKNESS + 0.01 : THICKNESS - 0.01);
+  const getDepth = () => (onLeft ? -1 * THICKNESS + 0.04 : THICKNESS - 0.04);
 
   return (
     <RigidBody type="kinematicPosition">
@@ -26,6 +26,7 @@ export default function Wall({
         <boxGeometry args={[WIDTH, HEIGHT, THICKNESS]}></boxGeometry>
         <meshStandardMaterial color={colour} />
         <Html
+          occlude
           rotation-y={getOrientation()}
           scale={0.36}
           position={[0, 0, getDepth()]}
@@ -33,10 +34,6 @@ export default function Wall({
         >
           {children}
         </Html>
-      </mesh>
-      <mesh position={[0, 0, depth]}>
-        <boxGeometry args={[0.6, 0.5, 3]}></boxGeometry>
-        <meshStandardMaterial color="white" />
       </mesh>
     </RigidBody>
   );
