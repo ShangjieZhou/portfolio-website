@@ -1,39 +1,75 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const SUBSECTION = {
-  START: [-4],
-  BUKA: [-10, -11.8, -13.6, -15.4],
-  NAVBIT: [-19, -20.8],
-  UNI: [-25, -26.8],
-  HIGHSCHOOL: [-28],
+export const SECNAME = {
+  START: 0,
+  BUKA: 1,
+  NAVBIT: 2,
+  UNI: 3,
+  HIGHSCHOOL: 4,
+  NPM: 5,
+};
+
+export const subSection = {
+  [SECNAME.START]: [-4],
+  [SECNAME.BUKA]: [-15, -16.8, -18.6, -20.4],
+  [SECNAME.NAVBIT]: [-25, -26.8],
+  [SECNAME.UNI]: [-35, -36.8],
+  [SECNAME.HIGHSCHOOL]: [-42, -43.8],
+  [SECNAME.NPM]: [-51, -52.8],
+};
+
+export const sectionEnd = {
+  [SECNAME.START]: -8,
+  [SECNAME.BUKA]: -22,
+  [SECNAME.NAVBIT]: -32,
+  [SECNAME.UNI]: -37,
+  [SECNAME.HIGHSCHOOL]: -43,
+  [SECNAME.NPM]: -49,
+};
+
+export const sideMap = {
+  [SECNAME.START]: 0,
+  [SECNAME.BUKA]: -1,
+  [SECNAME.NAVBIT]: 1,
+  [SECNAME.UNI]: -1,
+  [SECNAME.HIGHSCHOOL]: 1,
+  [SECNAME.NPM]: -1,
+};
+
+const getSecFromZ = (z) => {
+  let currSec = SECNAME.NPM;
+
+  for (const [key, value] of Object.entries(sectionEnd)) {
+    if (value < z && value > sectionEnd[currSec]) {
+      currSec = key;
+    }
+  }
+
+  return parseInt(currSec);
 };
 
 export const gallerySlice = createSlice({
   name: "gallery",
   initialState: {
-    playerPosition: SUBSECTION.START,
-    playerCurrentSection: SUBSECTION.START,
+    playerSection: SECNAME.START,
+    playerPosition: [sideMap[SECNAME.START], 0.1, subSection[SECNAME.START][0]],
   },
   reducers: {
     movePlayerTo: (state, action) => {
-      state.playerPosition = action.payload;
+      const sec = action.payload;
+      const x = sideMap[sec];
+      const z = subSection[sec][0];
+      state.playerPosition = [x, 0.1, z];
     },
-    updatePlayerCurrentSection: (state, action) => {
-      //   const currPosition = action.payload;
-      //   let section = SUBSECTION.START;
-      //   const area = SUBSECTION
-      //   for (const [key, value] of Object.entries(SUBSECTION)) {
-      //     const line = value + SECTIONOFFSET;
-      //     if (line > currPosition && line < section) {
-      //       section = value;
-      //     }
-      //   }
-      //   state.playerCurrentSection = section;
+    updatePlayerSection: (state, action) => {
+      const newSec = getSecFromZ(action.payload);
+      if (newSec !== state.playerSection) {
+        state.playerSection = getSecFromZ(action.payload);
+      }
     },
   },
 });
 
-export const { movePlayerTo, updatePlayerCurrentSection } =
-  gallerySlice.actions;
+export const { movePlayerTo, updatePlayerSection } = gallerySlice.actions;
 
 export default gallerySlice.reducer;

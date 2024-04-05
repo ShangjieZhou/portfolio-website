@@ -1,37 +1,27 @@
-.education-section {
+.project-section {
   img {
-    width: 76px;
+    width: 96px;
+    margin-bottom: 4px;
   }
 
-  .pic-desc {
-    display: flex;
-    flex-direction: column;
-    width: 140px;
-
-    li {
-      font-size: 8px;
-      text-align: left;
-    }
-  }
-
-  .school-title {
+  .project-title {
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 8px;
     margin-top: 8px;
 
-    #high-school {
+    #high-project {
       margin-left: 0px;
     }
-    .school-subtitle {
+    .project-subtitle {
       margin-left: 12px;
       display: flex;
       flex-direction: column;
 
       h1 {
         font-weight: 500;
-        font-size: 11px;
+        font-size: 12px;
       }
 
       a {
@@ -50,14 +40,9 @@
     }
   }
 
-  #hills-group {
-    margin-top: 16px;
-    width: 120px;
-  }
-
-  #grad {
-    margin-top: 28px;
-    width: 90px;
+  #annotate {
+    margin-top: 20px;
+    width: 130px;
   }
 
   ul {
@@ -66,7 +51,7 @@
     margin-top: 6px;
 
     li {
-      font-size: 9px;
+      font-size: 8px;
     }
   }
 }

@@ -4,7 +4,7 @@ import navbit from "../../assets/navbit.png";
 import react from "../../assets/react.png";
 import mui from "../../assets/mui.png";
 import scss from "../../assets/scss.png";
-import { SUBSECTION } from "../../features/gallery/gallerySlice";
+import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
 import "./WorkExp.scss";
 import Bench from "../Bench";
 
@@ -12,13 +12,17 @@ export default function WorkExp2({ width }) {
   return (
     <>
       <Bench
-        depth={(SUBSECTION.NAVBIT[0] + SUBSECTION.NAVBIT[1]) / 2}
-        length={SUBSECTION.NAVBIT[0] - SUBSECTION.NAVBIT[1] + 2.4}
+        depth={
+          (subSection[SECNAME.NAVBIT][0] + subSection[SECNAME.NAVBIT][1]) / 2
+        }
+        length={
+          subSection[SECNAME.NAVBIT][0] - subSection[SECNAME.NAVBIT][1] + 1.8
+        }
       />
       <Wall
         galleryWidth={width}
         onLeft={false}
-        depth={SUBSECTION.NAVBIT[0]}
+        depth={subSection[SECNAME.NAVBIT][0]}
         colour="mediumpurple"
       >
         <div className="section-detail work-section">
@@ -40,7 +44,7 @@ export default function WorkExp2({ width }) {
       <Wall
         galleryWidth={width}
         onLeft={false}
-        depth={SUBSECTION.NAVBIT[1]}
+        depth={subSection[SECNAME.NAVBIT][1]}
         colour="mediumpurple"
       >
         <div className="section-detail work-section collage">

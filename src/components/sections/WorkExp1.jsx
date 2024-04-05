@@ -10,7 +10,7 @@ import kafka from "../../assets/kafka.png";
 import terra from "../../assets/terra.png";
 import python from "../../assets/python.png";
 import Wall from "../Wall";
-import { SUBSECTION } from "../../features/gallery/gallerySlice";
+import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
 import "./WorkExp.scss";
 import { RigidBody } from "@react-three/rapier";
 import Bench from "../Bench";
@@ -19,14 +19,14 @@ export default function WorkExp1({ width }) {
   return (
     <>
       <Bench
-        depth={(SUBSECTION.BUKA[0] + SUBSECTION.BUKA[3]) / 2}
-        length={SUBSECTION.BUKA[0] - SUBSECTION.BUKA[3] + 2.4}
+        depth={(subSection[SECNAME.BUKA][0] + subSection[SECNAME.BUKA][3]) / 2}
+        length={subSection[SECNAME.BUKA][0] - subSection[SECNAME.BUKA][3] + 1.8}
       />
 
       <Wall
         galleryWidth={width}
         onLeft={true}
-        depth={SUBSECTION.BUKA[0]}
+        depth={subSection[SECNAME.BUKA][0]}
         colour="mediumpurple"
       >
         <div className="section-detail work-section">
@@ -48,7 +48,7 @@ export default function WorkExp1({ width }) {
       <Wall
         galleryWidth={width}
         onLeft={true}
-        depth={SUBSECTION.BUKA[1]}
+        depth={subSection[SECNAME.BUKA][1]}
         colour="mediumpurple"
       >
         <div className="section-detail work-section buka-intro">
@@ -62,7 +62,7 @@ export default function WorkExp1({ width }) {
       <Wall
         galleryWidth={width}
         onLeft={true}
-        depth={SUBSECTION.BUKA[2]}
+        depth={subSection[SECNAME.BUKA][2]}
         colour="mediumpurple"
       >
         <div className="section-detail work-section collage">
@@ -81,7 +81,7 @@ export default function WorkExp1({ width }) {
       <Wall
         galleryWidth={width}
         onLeft={true}
-        depth={SUBSECTION.BUKA[3]}
+        depth={subSection[SECNAME.BUKA][3]}
         colour="mediumpurple"
       >
         <div className="section-detail work-section collage">

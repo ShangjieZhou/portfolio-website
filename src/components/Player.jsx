@@ -1,29 +1,24 @@
 import { RigidBody } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import * as THREE from "three";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePlayerCurrentSection } from "../features/gallery/gallerySlice";
-import { SUBSECTION } from "../features/gallery/gallerySlice";
+import {
+  updatePlayerSection,
+  subSection,
+  sideMap,
+} from "../features/gallery/gallerySlice";
 
 const SPEED = 0.3;
-const BUFFER = 1.5;
+const BUFFER = 1;
 
-const sideMap = {
-  START: 0,
-  BUKA: -1,
-  NAVBIT: 1,
-  UNI: -1,
-  HIGHSCHOOL: 1,
-};
-
-export default function Player({ walls }) {
+export default function Player({}) {
   const body = useRef();
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const [smoothedCameraPosition] = useState(() => new THREE.Vector3());
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
-  const playerDepth = useSelector((state) => state.gallery.playerPosition);
+  const playerPos = useSelector((state) => state.gallery.playerPosition);
   const dispatch = useDispatch();
 
   useFrame((state, delta) => {
@@ -49,19 +44,19 @@ export default function Player({ walls }) {
     const bodyPosition = body.current.translation();
     let cameraPosition = new THREE.Vector3(
       bodyPosition.x,
-      0.65,
+      0.6,
       bodyPosition.z + 2.8
     );
     let cameraTarget = new THREE.Vector3(
       bodyPosition.x,
-      bodyPosition.y + 0.25,
+      bodyPosition.y + 0.3,
       bodyPosition.z
     );
 
     // switch camera angle when near a display section
     body.current.setLinearDamping(0.5);
 
-    for (const [key, value] of Object.entries(SUBSECTION)) {
+    for (const [key, value] of Object.entries(subSection)) {
       const start = value[0] + BUFFER - bodyPosition.z;
       const end = bodyPosition.z - value.at(-1) + BUFFER;
       if (
@@ -86,7 +81,7 @@ export default function Player({ walls }) {
     state.camera.position.copy(smoothedCameraPosition);
     state.camera.lookAt(smoothedCameraTarget);
 
-    dispatch(updatePlayerCurrentSection(bodyPosition.z));
+    dispatch(updatePlayerSection(bodyPosition.z));
   });
 
   const calcMovement = (
@@ -129,11 +124,11 @@ export default function Player({ walls }) {
   return (
     <RigidBody
       linearDamping={0.5}
-      angularDamping={0.5}
+      angularDamping={4}
       friction={1}
       restitution={0.2}
       ref={body}
-      position={[0, 1, playerDepth]}
+      position={playerPos}
       colliders="ball"
       canSleep={false}
     >

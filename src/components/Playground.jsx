@@ -9,19 +9,17 @@ const groundMaterial = new THREE.MeshStandardMaterial({
   emissiveIntensity: 1,
 });
 
-function IntroText({ position, text, color = "white", size = 1 }) {
+function IntroText({ position, text, color = "white", size = 10 }) {
   return (
     <group position={position}>
       <Float speed={2} floatIntensity={0.4} rotationIntensity={0.25}>
         <Text
-        
           fontSize={size}
           font="/bebas-neue-v9-latin-regular.woff"
           scale={[0.5, 0.4, 1]}
           maxWidth={2}
-          
           lineHeight={0.75}
-          textAlign="left"
+          textAlign="right"
           position={[0, 0.65, 0]}
           rotation-y={-0.25}
         >
@@ -63,7 +61,7 @@ export default function Playground({ length, width }) {
         <mesh position={[0, 1, length / 2 - 3.8]} rotation-x={Math.PI}>
           <planeGeometry args={[width, 2]} />
         </mesh>
-        <mesh material={groundMaterial} position={[0, 1, length / -2]}>
+        <mesh material={wallMaterial} position={[0, 1, length / -2]}>
           <planeGeometry args={[width, 2]} />
         </mesh>
       </RigidBody>
@@ -76,7 +74,7 @@ export default function Playground({ length, width }) {
       </mesh>
       <IntroText
         size={1}
-        position={[0.6, 0, length / 2 - 5]}
+        position={[0.6, 0, length / 2 - 4]}
         text={"Shangjie Zhou"}
       />
     </group>

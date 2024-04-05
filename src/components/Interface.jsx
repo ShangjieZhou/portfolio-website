@@ -4,29 +4,55 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { movePlayerTo, SUBSECTION } from "../features/gallery/gallerySlice";
+import {
+  movePlayerTo,
+  SECNAME,
+  subSection,
+} from "../features/gallery/gallerySlice";
 import keyboard from "../assets/arrowkeys.png";
 import { useKeyboardControls } from "@react-three/drei";
+import { Transition } from "react-transition-group";
 
 const titleMap = {
-  [SUBSECTION.START]: "Experience",
-  [SUBSECTION.BUKA]: "Experience",
-  [SUBSECTION.NAVBIT]: "Experience",
-  [SUBSECTION.UNI]: "Education",
-  [SUBSECTION.HIGHSCHOOL]: "Education",
+  [SECNAME.START]: "Content Table",
+  [SECNAME.BUKA]: "Experience: Bukalapak",
+  [SECNAME.NAVBIT]: "Experience: Navbit",
+  [SECNAME.UNI]: "Education: Bachelor",
+  [SECNAME.HIGHSCHOOL]: "Education: High School",
+  [SECNAME.NPM]: "Project: Simple Annotate",
+};
+
+const titleClass = {
+  [SECNAME.START]: "experience",
+  [SECNAME.BUKA]: "experience",
+  [SECNAME.NAVBIT]: "experience",
+  [SECNAME.UNI]: "education",
+  [SECNAME.HIGHSCHOOL]: "education",
+  [SECNAME.NPM]: "project",
 };
 
 export default function Interface() {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
   const [subscribeKeys, _] = useKeyboardControls();
-  const currSection = useSelector(
-    (state) => state.gallery.playerCurrentSection
-  );
+  const currSection = useSelector((state) => state.gallery.playerSection);
   const [showHint, setShowHint] = useState(true);
   const timerRef = useRef();
 
   useEffect(() => {
+    window.addEventListener(
+      "keydown",
+      (e) => {
+        if (
+          ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(
+            e.code
+          ) > -1
+        ) {
+          e.preventDefault();
+        }
+      },
+      false
+    );
     return subscribeKeys(
       (state) =>
         state.forward || state.backward || state.leftward || state.rightward,
@@ -43,6 +69,7 @@ export default function Interface() {
   }, []);
 
   const moveTo = (subSection) => {
+    console.log("Clicked");
     dispatch(movePlayerTo(subSection));
   };
 
@@ -51,6 +78,10 @@ export default function Interface() {
       return "highlight";
     }
     return "";
+  };
+
+  const hide = () => {
+    return currSection === SECNAME.START ? "hide" : "";
   };
 
   return (
@@ -62,22 +93,25 @@ export default function Interface() {
           <p>to explore</p>
         </div>
       )}
-      <div id="content-table">
+
+      <div className={hide()} id="content-table">
         <div className={collapsed ? "foldable fold" : "foldable"}>
-          {collapsed && <h1>{titleMap[currSection]}</h1>}
+          {collapsed && (
+            <h1 className={titleClass[currSection]}>{titleMap[currSection]}</h1>
+          )}
           {!collapsed && (
             <>
               <div className="experience section">
                 <h1>Experience</h1>
                 <p
-                  className={highlight(SUBSECTION.BUKA)}
-                  onClick={() => moveTo(SUBSECTION.BUKA)}
+                  className={highlight(SECNAME.BUKA)}
+                  onClick={() => moveTo(SECNAME.BUKA)}
                 >
                   Bukalapak
                 </p>
                 <p
-                  className={highlight(SUBSECTION.NAVBIT)}
-                  onClick={() => moveTo(SUBSECTION.NAVBIT)}
+                  className={highlight(SECNAME.NAVBIT)}
+                  onClick={() => moveTo(SECNAME.NAVBIT)}
                 >
                   Navbit
                 </p>
@@ -85,16 +119,25 @@ export default function Interface() {
               <div className="education section">
                 <h1>Education</h1>
                 <p
-                  className={highlight(SUBSECTION.UNI)}
-                  onClick={() => moveTo(SUBSECTION.UNI)}
+                  className={highlight(SECNAME.UNI)}
+                  onClick={() => moveTo(SECNAME.UNI)}
                 >
                   University of New South Wales
                 </p>
                 <p
-                  className={highlight(SUBSECTION.HIGHSCHOOL)}
-                  onClick={() => moveTo(SUBSECTION.HIGHSCHOOL)}
+                  className={highlight(SECNAME.HIGHSCHOOL)}
+                  onClick={() => moveTo(SECNAME.HIGHSCHOOL)}
                 >
                   Hills Adventist College
+                </p>
+              </div>
+              <div className="project section">
+                <h1>Personal Projects</h1>
+                <p
+                  className={highlight(SECNAME.NPM)}
+                  onClick={() => moveTo(SECNAME.NPM)}
+                >
+                  Simple Annotate
                 </p>
               </div>
             </>

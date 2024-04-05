@@ -2,7 +2,7 @@ import "../../style.scss";
 import Wall from "../Wall";
 import unsw from "../../assets/unsw.png";
 import grad from "../../assets/grad.jpeg";
-import { SUBSECTION } from "../../features/gallery/gallerySlice";
+import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
 import "./Education.scss";
 import Bench from "../Bench";
 
@@ -10,13 +10,13 @@ export default function Education1({ width }) {
   return (
     <>
       <Bench
-        depth={(SUBSECTION.UNI[0] + SUBSECTION.UNI[1]) / 2}
-        length={SUBSECTION.UNI[0] - SUBSECTION.UNI[1] + 2.4}
+        depth={(subSection[SECNAME.UNI][0] + subSection[SECNAME.UNI][1]) / 2}
+        length={subSection[SECNAME.UNI][0] - subSection[SECNAME.UNI][1] + 1.8}
       />
       <Wall
         galleryWidth={width}
         onLeft={true}
-        depth={SUBSECTION.UNI[0]}
+        depth={subSection[SECNAME.UNI][0]}
         colour="#EA4D82"
       >
         <div className="section-detail education-section">
@@ -35,7 +35,7 @@ export default function Education1({ width }) {
       <Wall
         galleryWidth={width}
         onLeft={true}
-        depth={SUBSECTION.UNI[1]}
+        depth={subSection[SECNAME.UNI][1]}
         colour="#EA4D82"
       >
         <div className="section-detail education-section">
