@@ -10,7 +10,7 @@ const wallMaterial = new THREE.MeshStandardMaterial({
 const groundMaterial = new THREE.MeshStandardMaterial({
   color: "white",
   emissive: "white",
-  emissiveIntensity: 0.8,
+  emissiveIntensity: 0.6,
 });
 
 function IntroText({ position, text, color = "white", size = 10 }) {

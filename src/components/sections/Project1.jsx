@@ -5,6 +5,7 @@ import "./Project.scss";
 import npm from "../../assets/npm.png";
 import annotate from "../../assets/annotate.png";
 import Bench from "../Bench";
+import { ORANGE } from "../../Gallery";
 
 export default function Project1({ width }) {
   return (
@@ -17,7 +18,7 @@ export default function Project1({ width }) {
         galleryWidth={width}
         onLeft={false}
         depth={subSection[SECNAME.NPM][0]}
-        colour="#f38042"
+        colour={ORANGE}
       >
         <div className="section-detail project-section">
           <div className="project-title">
@@ -42,7 +43,7 @@ export default function Project1({ width }) {
         galleryWidth={width}
         onLeft={false}
         depth={subSection[SECNAME.NPM][1]}
-        colour="#f38042"
+        colour={ORANGE}
       >
         <div className="section-detail project-section">
           <img id="annotate" src={annotate} alt="" />

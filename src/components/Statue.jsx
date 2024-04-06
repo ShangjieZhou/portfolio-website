@@ -8,18 +8,13 @@ export default function Statue({
   rotation,
   scale,
   baseX,
+  baseZ = 0,
   color,
   lightRef,
 }) {
   return (
     <RigidBody>
       <group rotation-y={rotation} dispose={null} position={position}>
-        <mesh
-          position={[baseX, 0, 0]}
-          scale={0.05}
-          geometry={new CylinderGeometry(6, 6, 2, 10, 1)}
-          material={new MeshStandardMaterial({ color: color })}
-        />
         <mesh
           ref={lightRef}
           position-y={0.04}

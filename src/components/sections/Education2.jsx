@@ -5,6 +5,7 @@ import group from "../../assets/hills-group.jpeg";
 import { subSection, SECNAME, sideMap } from "../../features/gallery/gallerySlice";
 import "./Education.scss";
 import Bench from "../Bench";
+import { PINK } from "../../Gallery";
 
 export default function Education2({ width }) {
   return (
@@ -17,7 +18,7 @@ export default function Education2({ width }) {
         galleryWidth={width}
         onLeft={true}
         depth={subSection[SECNAME.HIGHSCHOOL][0]}
-        colour="#EA4D82"
+        colour={PINK}
       >
         <div className="section-detail education-section">
           <img src={hills} alt="" />
@@ -39,7 +40,7 @@ export default function Education2({ width }) {
         galleryWidth={width}
         onLeft={true}
         depth={subSection[SECNAME.HIGHSCHOOL][1]}
-        colour="#EA4D82"
+        colour={PINK}
       >
         <div className="section-detail education-section">
           <img id="hills-group" src={group} alt="" />

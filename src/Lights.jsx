@@ -1,11 +1,50 @@
+import { SpotLight } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const INTENSITY = 2;
+const spotLightHeight = 1;
+const zShift = 0.72;
+const yShift = 0.28;
+import { SECNAME, subSection } from "./features/gallery/gallerySlice.js";
 
 export default function Lights() {
   const lightFromLeft = useRef();
   const lightFromRight = useRef();
+
+  const lightOne = useRef();
+  const lightTwo = useRef();
+  const lightThree = useRef();
+  const lightFour = useRef();
+  const lightFive = useRef();
+
+  useEffect(() => {
+    lightOne.current.target.position.set(
+      2,
+      spotLightHeight,
+      subSection[SECNAME.BUKA][0]
+    );
+    lightTwo.current.target.position.set(
+      -2,
+      spotLightHeight,
+      subSection[SECNAME.NAVBIT][0]
+    );
+    lightThree.current.target.position.set(
+      2,
+      spotLightHeight,
+      subSection[SECNAME.UNI][0]
+    );
+    lightFour.current.target.position.set(
+      -2,
+      spotLightHeight,
+      subSection[SECNAME.HIGHSCHOOL][0]
+    );
+    lightFive.current.target.position.set(
+      2,
+      spotLightHeight,
+      subSection[SECNAME.NPM][0]
+    );
+  }, []);
 
   useFrame((state) => {
     lightFromLeft.current.position.z = state.camera.position.z + 1 - 4;
@@ -19,6 +58,56 @@ export default function Lights() {
 
   return (
     <>
+      <SpotLight
+        ref={lightOne}
+        position={[1.8, yShift, subSection[SECNAME.BUKA][0] + zShift]}
+        penumbra={0.5}
+        distance={1}
+        angle={0.8}
+        anglePower={8}
+        intensity={1}
+        opacity={0.2}
+      />
+      <SpotLight
+        ref={lightTwo}
+        position={[-1.8, yShift, subSection[SECNAME.NAVBIT][0] + zShift]}
+        penumbra={0.5}
+        distance={1}
+        angle={0.8}
+        anglePower={8}
+        intensity={1}
+        opacity={0.2}
+      />
+      <SpotLight
+        ref={lightThree}
+        position={[1.8, yShift, subSection[SECNAME.UNI][0] + zShift]}
+        penumbra={0.5}
+        distance={1}
+        angle={0.8}
+        anglePower={8}
+        intensity={1}
+        opacity={0.2}
+      />
+      <SpotLight
+        ref={lightFour}
+        position={[-1.8, yShift, subSection[SECNAME.HIGHSCHOOL][0] + zShift]}
+        penumbra={0.5}
+        distance={1}
+        angle={0.8}
+        anglePower={8}
+        intensity={1}
+        opacity={0.2}
+      />
+      <SpotLight
+        ref={lightFive}
+        position={[1.8, yShift, subSection[SECNAME.NPM][0] + zShift]}
+        penumbra={0.5}
+        distance={1}
+        angle={0.8}
+        anglePower={8}
+        intensity={1}
+        opacity={0.2}
+      />
       <directionalLight
         ref={lightFromRight}
         castShadow

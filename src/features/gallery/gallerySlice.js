@@ -10,7 +10,7 @@ export const SECNAME = {
 };
 
 export const subSection = {
-  [SECNAME.START]: [-10],
+  [SECNAME.START]: [-4],
   [SECNAME.BUKA]: [-15, -16.8, -18.6, -20.4],
   [SECNAME.NAVBIT]: [-25, -26.8],
   [SECNAME.UNI]: [-35, -36.8],

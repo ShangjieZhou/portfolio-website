@@ -5,6 +5,7 @@ import grad from "../../assets/grad.jpeg";
 import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
 import "./Education.scss";
 import Bench from "../Bench";
+import { PINK } from "../../Gallery";
 
 export default function Education1({ width }) {
   return (
@@ -17,7 +18,7 @@ export default function Education1({ width }) {
         galleryWidth={width}
         onLeft={false}
         depth={subSection[SECNAME.UNI][0]}
-        colour="#EA4D82"
+        colour={PINK}
       >
         <div className="section-detail education-section">
           <img src={unsw} alt="" />
@@ -36,7 +37,7 @@ export default function Education1({ width }) {
         galleryWidth={width}
         onLeft={false}
         depth={subSection[SECNAME.UNI][1]}
-        colour="#EA4D82"
+        colour={PINK}
       >
         <div className="section-detail education-section">
           <img id="grad" src={grad} alt="" />
