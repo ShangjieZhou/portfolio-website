@@ -15,7 +15,7 @@ export default function Project1({ width }) {
       />
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.NPM][0]}
         colour="#f38042"
       >
@@ -40,7 +40,7 @@ export default function Project1({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.NPM][1]}
         colour="#f38042"
       >

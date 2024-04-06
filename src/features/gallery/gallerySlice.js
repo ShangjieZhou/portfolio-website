@@ -10,7 +10,7 @@ export const SECNAME = {
 };
 
 export const subSection = {
-  [SECNAME.START]: [-4],
+  [SECNAME.START]: [-10],
   [SECNAME.BUKA]: [-15, -16.8, -18.6, -20.4],
   [SECNAME.NAVBIT]: [-25, -26.8],
   [SECNAME.UNI]: [-35, -36.8],
@@ -21,7 +21,7 @@ export const subSection = {
 export const sectionEnd = {
   [SECNAME.START]: -8,
   [SECNAME.BUKA]: -22,
-  [SECNAME.NAVBIT]: -32,
+  [SECNAME.NAVBIT]: -28,
   [SECNAME.UNI]: -37,
   [SECNAME.HIGHSCHOOL]: -43,
   [SECNAME.NPM]: -49,
@@ -29,11 +29,11 @@ export const sectionEnd = {
 
 export const sideMap = {
   [SECNAME.START]: 0,
-  [SECNAME.BUKA]: -1,
-  [SECNAME.NAVBIT]: 1,
-  [SECNAME.UNI]: -1,
-  [SECNAME.HIGHSCHOOL]: 1,
-  [SECNAME.NPM]: -1,
+  [SECNAME.BUKA]: 1,
+  [SECNAME.NAVBIT]: -1,
+  [SECNAME.UNI]: 1,
+  [SECNAME.HIGHSCHOOL]: -1,
+  [SECNAME.NPM]: 1,
 };
 
 const getSecFromZ = (z) => {

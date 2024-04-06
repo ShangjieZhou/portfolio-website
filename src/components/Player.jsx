@@ -54,7 +54,7 @@ export default function Player({}) {
     );
 
     // switch camera angle when near a display section
-    body.current.setLinearDamping(0.5);
+    body.current.setLinearDamping(0.8);
 
     for (const [key, value] of Object.entries(subSection)) {
       const start = value[0] + BUFFER - bodyPosition.z;
@@ -70,7 +70,7 @@ export default function Player({}) {
         const camZ = Math.max(value.at(-1), Math.min(bodyPosition.z, value[0]));
         cameraPosition = new THREE.Vector3(camPosX, 0.85, camZ);
         cameraTarget = new THREE.Vector3(camTargetX, 1, camZ);
-        body.current.setLinearDamping(4); // slow down the ball
+        body.current.setLinearDamping(6); // slow down the ball
         break;
       }
     }
@@ -123,7 +123,7 @@ export default function Player({}) {
 
   return (
     <RigidBody
-      linearDamping={0.5}
+      linearDamping={0.8}
       angularDamping={4}
       friction={1}
       restitution={0.2}
@@ -133,7 +133,7 @@ export default function Player({}) {
       canSleep={false}
     >
       <mesh castShadow>
-        <icosahedronGeometry args={[0.2, 1]} />
+        <icosahedronGeometry args={[0.18, 1]} />
         <meshStandardMaterial flatShading color="#DDDDDD" />
       </mesh>
     </RigidBody>

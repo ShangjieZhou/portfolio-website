@@ -2,7 +2,7 @@ import "../../style.scss";
 import Wall from "../Wall";
 import hills from "../../assets/hills.png";
 import group from "../../assets/hills-group.jpeg";
-import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
+import { subSection, SECNAME, sideMap } from "../../features/gallery/gallerySlice";
 import "./Education.scss";
 import Bench from "../Bench";
 
@@ -15,7 +15,7 @@ export default function Education2({ width }) {
       />
       <Wall
         galleryWidth={width}
-        onLeft={false}
+        onLeft={true}
         depth={subSection[SECNAME.HIGHSCHOOL][0]}
         colour="#EA4D82"
       >
@@ -37,7 +37,7 @@ export default function Education2({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={false}
+        onLeft={true}
         depth={subSection[SECNAME.HIGHSCHOOL][1]}
         colour="#EA4D82"
       >

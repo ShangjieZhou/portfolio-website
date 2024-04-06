@@ -14,6 +14,7 @@ import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
 import "./WorkExp.scss";
 import { RigidBody } from "@react-three/rapier";
 import Bench from "../Bench";
+import { PURPLE } from "../../Gallery";
 
 export default function WorkExp1({ width }) {
   return (
@@ -25,9 +26,9 @@ export default function WorkExp1({ width }) {
 
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.BUKA][0]}
-        colour="mediumpurple"
+        colour={PURPLE}
       >
         <div className="section-detail work-section">
           <img src={bukaLogo} alt="" />
@@ -47,9 +48,9 @@ export default function WorkExp1({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.BUKA][1]}
-        colour="mediumpurple"
+        colour={PURPLE}
       >
         <div className="section-detail work-section buka-intro">
           <img src={bukaPic} alt="" />
@@ -61,9 +62,9 @@ export default function WorkExp1({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.BUKA][2]}
-        colour="mediumpurple"
+        colour={PURPLE}
       >
         <div className="section-detail work-section collage">
           <img id="mysql" src={mysqlLogo} alt="" />
@@ -80,9 +81,9 @@ export default function WorkExp1({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.BUKA][3]}
-        colour="mediumpurple"
+        colour={PURPLE}
       >
         <div className="section-detail work-section collage">
           <img id="azure" src={azure} alt="" />

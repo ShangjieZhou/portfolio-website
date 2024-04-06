@@ -7,6 +7,7 @@ import scss from "../../assets/scss.png";
 import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
 import "./WorkExp.scss";
 import Bench from "../Bench";
+import { PURPLE } from "../../Gallery";
 
 export default function WorkExp2({ width }) {
   return (
@@ -21,9 +22,9 @@ export default function WorkExp2({ width }) {
       />
       <Wall
         galleryWidth={width}
-        onLeft={false}
+        onLeft={true}
         depth={subSection[SECNAME.NAVBIT][0]}
-        colour="mediumpurple"
+        colour={PURPLE}
       >
         <div className="section-detail work-section">
           <img src={navbit} alt="" />
@@ -43,9 +44,9 @@ export default function WorkExp2({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={false}
+        onLeft={true}
         depth={subSection[SECNAME.NAVBIT][1]}
-        colour="mediumpurple"
+        colour={PURPLE}
       >
         <div className="section-detail work-section collage">
           <img id="react" src={react} alt="" />

@@ -2,11 +2,15 @@ import { Float, Text } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 
-const wallMaterial = new THREE.MeshStandardMaterial({ color: "white" });
+const wallMaterial = new THREE.MeshStandardMaterial({
+  color: "white",
+  emissive: "white",
+  emissiveIntensity: 0.1,
+});
 const groundMaterial = new THREE.MeshStandardMaterial({
   color: "white",
   emissive: "white",
-  emissiveIntensity: 1,
+  emissiveIntensity: 0.8,
 });
 
 function IntroText({ position, text, color = "white", size = 10 }) {
@@ -74,7 +78,7 @@ export default function Playground({ length, width }) {
       </mesh>
       <IntroText
         size={1}
-        position={[0.6, 0, length / 2 - 4]}
+        position={[0.6, 0, length / 2 - 4.3]}
         text={"Shangjie Zhou"}
       />
     </group>

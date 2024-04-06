@@ -15,7 +15,7 @@ export default function Education1({ width }) {
       />
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.UNI][0]}
         colour="#EA4D82"
       >
@@ -34,7 +34,7 @@ export default function Education1({ width }) {
       </Wall>
       <Wall
         galleryWidth={width}
-        onLeft={true}
+        onLeft={false}
         depth={subSection[SECNAME.UNI][1]}
         colour="#EA4D82"
       >

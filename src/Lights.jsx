@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-const INTENSITY = 3;
+const INTENSITY = 2;
 
 export default function Lights() {
   const lightFromLeft = useRef();
@@ -45,7 +45,7 @@ export default function Lights() {
         shadow-camera-bottom={-10}
         shadow-camera-left={-10}
       />
-      <ambientLight intensity={1.6} />
+      <ambientLight intensity={1} />
     </>
   );
 }
