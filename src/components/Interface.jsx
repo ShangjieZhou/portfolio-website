@@ -1,38 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardArrowUp,
-} from "react-icons/md";
+
 import { useDispatch, useSelector } from "react-redux";
-import {
-  movePlayerTo,
-  SECNAME,
-  subSection,
-} from "../features/gallery/gallerySlice";
+import { movePlayerTo, SECNAME } from "../features/gallery/gallerySlice";
 import keyboard from "../assets/arrowkeys.png";
 import { useKeyboardControls } from "@react-three/drei";
-import { Transition } from "react-transition-group";
-
-const titleMap = {
-  [SECNAME.START]: "Content Table",
-  [SECNAME.BUKA]: "Experience: Bukalapak",
-  [SECNAME.NAVBIT]: "Experience: Navbit",
-  [SECNAME.UNI]: "Education: Bachelor",
-  [SECNAME.HIGHSCHOOL]: "Education: High School",
-  [SECNAME.NPM]: "Project: Simple Annotate",
-};
-
-const titleClass = {
-  [SECNAME.START]: "experience",
-  [SECNAME.BUKA]: "experience",
-  [SECNAME.NAVBIT]: "experience",
-  [SECNAME.UNI]: "education",
-  [SECNAME.HIGHSCHOOL]: "education",
-  [SECNAME.NPM]: "project",
-};
+import arrowIcon from "../assets/arrow.svg";
 
 export default function Interface() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const dispatch = useDispatch();
   const [subscribeKeys, _] = useKeyboardControls();
   const currSection = useSelector((state) => state.gallery.playerSection);
@@ -69,7 +44,6 @@ export default function Interface() {
   }, []);
 
   const moveTo = (subSection) => {
-    console.log("Clicked");
     dispatch(movePlayerTo(subSection));
   };
 
@@ -78,10 +52,6 @@ export default function Interface() {
       return "highlight";
     }
     return "";
-  };
-
-  const hide = () => {
-    return currSection === SECNAME.START ? "hide" : "";
   };
 
   return (
@@ -94,62 +64,72 @@ export default function Interface() {
         </div>
       )}
 
-      <div className={hide()} id="content-table">
-        <div className={collapsed ? "foldable fold" : "foldable"}>
-          {collapsed && (
-            <h1 className={titleClass[currSection]}>{titleMap[currSection]}</h1>
-          )}
-          {!collapsed && (
-            <>
-              <div className="experience section">
-                <h1>Experience</h1>
-                <p
-                  className={highlight(SECNAME.BUKA)}
-                  onClick={() => moveTo(SECNAME.BUKA)}
-                >
-                  Bukalapak
-                </p>
-                <p
-                  className={highlight(SECNAME.NAVBIT)}
-                  onClick={() => moveTo(SECNAME.NAVBIT)}
-                >
-                  Navbit
-                </p>
-              </div>
-              <div className="education section">
-                <h1>Education</h1>
-                <p
-                  className={highlight(SECNAME.UNI)}
-                  onClick={() => moveTo(SECNAME.UNI)}
-                >
-                  University of New South Wales
-                </p>
-                <p
-                  className={highlight(SECNAME.HIGHSCHOOL)}
-                  onClick={() => moveTo(SECNAME.HIGHSCHOOL)}
-                >
-                  Hills Adventist College
-                </p>
-              </div>
-              <div className="project section">
-                <h1>Personal Projects</h1>
-                <p
-                  className={highlight(SECNAME.NPM)}
-                  onClick={() => moveTo(SECNAME.NPM)}
-                >
-                  Simple Annotate
-                </p>
-              </div>
-            </>
-          )}
+      <div id="content-table" className={collapsed ? "hide" : ""}>
+        <div className="foldable">
+          <div className="start section">
+            <h1>Gallery Entrance</h1>
+            <p
+              className={highlight(SECNAME.START)}
+              onClick={() => moveTo(SECNAME.START)}
+            >
+              Shangjie The Thinker
+            </p>
+          </div>
+          <div className="experience section">
+            <h1>My Experience</h1>
+            <p
+              className={highlight(SECNAME.BUKA)}
+              onClick={() => moveTo(SECNAME.BUKA)}
+            >
+              Bukalapak
+            </p>
+            <p
+              className={highlight(SECNAME.NAVBIT)}
+              onClick={() => moveTo(SECNAME.NAVBIT)}
+            >
+              Navbit
+            </p>
+          </div>
+          <div className="education section">
+            <h1>My Education</h1>
+            <p
+              className={highlight(SECNAME.UNI)}
+              onClick={() => moveTo(SECNAME.UNI)}
+            >
+              University of New South Wales
+            </p>
+            <p
+              className={highlight(SECNAME.HIGHSCHOOL)}
+              onClick={() => moveTo(SECNAME.HIGHSCHOOL)}
+            >
+              Hills Adventist College
+            </p>
+          </div>
+          <div className="project section">
+            <h1>Personal Projects</h1>
+            <p
+              className={highlight(SECNAME.NPM)}
+              onClick={() => moveTo(SECNAME.NPM)}
+            >
+              Simple Annotator
+            </p>
+          </div>
+          <div className="end section">
+            <h1>Gallery Back Wall</h1>
+            <p
+              className={highlight(SECNAME.END)}
+              onClick={() => moveTo(SECNAME.END)}
+            >
+              The Boxes
+            </p>
+          </div>
         </div>
         <button id="fold-btn" onClick={() => setCollapsed(!collapsed)}>
-          {collapsed && (
-            <MdOutlineKeyboardArrowDown color="white" size={"1.6rem"} />
-          )}
-          {!collapsed && (
-            <MdOutlineKeyboardArrowUp color="white" size={"1.6rem"} />
-          )}
+          <img
+            className={collapsed ? "arrow-btn" : "arrow-btn flipped"}
+            src={arrowIcon}
+            alt=""
+          />
         </button>
       </div>
     </div>

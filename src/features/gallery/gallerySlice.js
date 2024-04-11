@@ -7,6 +7,7 @@ export const SECNAME = {
   UNI: 3,
   HIGHSCHOOL: 4,
   NPM: 5,
+  END: 6,
 };
 
 export const subSection = {
@@ -16,15 +17,17 @@ export const subSection = {
   [SECNAME.UNI]: [-35, -36.8],
   [SECNAME.HIGHSCHOOL]: [-42, -43.8],
   [SECNAME.NPM]: [-51, -52.8],
+  [SECNAME.END]: [-55],
 };
 
 export const sectionEnd = {
   [SECNAME.START]: -8,
   [SECNAME.BUKA]: -22,
   [SECNAME.NAVBIT]: -28,
-  [SECNAME.UNI]: -37,
-  [SECNAME.HIGHSCHOOL]: -43,
-  [SECNAME.NPM]: -49,
+  [SECNAME.UNI]: -38,
+  [SECNAME.HIGHSCHOOL]: -45,
+  [SECNAME.NPM]: -54,
+  [SECNAME.END]: -58,
 };
 
 export const sideMap = {
@@ -34,10 +37,11 @@ export const sideMap = {
   [SECNAME.UNI]: 1,
   [SECNAME.HIGHSCHOOL]: -1,
   [SECNAME.NPM]: 1,
+  [SECNAME.END]: 0,
 };
 
 const getSecFromZ = (z) => {
-  let currSec = SECNAME.NPM;
+  let currSec = SECNAME.END;
 
   for (const [key, value] of Object.entries(sectionEnd)) {
     if (value < z && value > sectionEnd[currSec]) {
@@ -52,14 +56,14 @@ export const gallerySlice = createSlice({
   name: "gallery",
   initialState: {
     playerSection: SECNAME.START,
-    playerPosition: [sideMap[SECNAME.START], 0.1, subSection[SECNAME.START][0]],
+    playerPosition: [sideMap[SECNAME.START], 0.5, subSection[SECNAME.START][0]],
   },
   reducers: {
     movePlayerTo: (state, action) => {
       const sec = action.payload;
       const x = sideMap[sec];
       const z = subSection[sec][0];
-      state.playerPosition = [x, 0.1, z];
+      state.playerPosition = [x, 0.5, z];
     },
     updatePlayerSection: (state, action) => {
       const newSec = getSecFromZ(action.payload);

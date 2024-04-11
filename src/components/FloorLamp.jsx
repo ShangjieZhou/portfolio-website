@@ -10,19 +10,23 @@ const lightMat = new MeshStandardMaterial({
   emissiveIntensity: 10,
 });
 
-export default function FloorLamp({ position, rotation, color }) {
+export default function FloorLamp({
+  position,
+  rotation,
+  color,
+  lookupAngle = 0.9,
+}) {
   const mat = new MeshStandardMaterial({ color: color, flatShading: true });
 
   return (
     <RigidBody type="kinematicPosition">
       <group scale={0.06} rotation-y={rotation} position={position}>
         <mesh position-y={1} geometry={bottom} material={mat} />
-        <group rotation-z={0.9} position={[0, 2.6, 0]}>
+        <group rotation-z={lookupAngle} position={[0, 2.6, 0]}>
           <mesh geometry={top} material={mat} />
           <mesh
             position-y={1.42}
             rotation-x={-Math.PI * 0.5}
-            // rotation={[Math.PI, 0, 0]}
             geometry={lightGeo}
             material={lightMat}
           />

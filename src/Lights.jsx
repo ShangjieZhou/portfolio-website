@@ -2,7 +2,8 @@ import { SpotLight } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 
-const INTENSITY = 2;
+const INTENSITY = 1;
+const ENVINTENSITY = 0.9;
 const spotLightHeight = 1;
 const zShift = 0.72;
 const yShift = 0.28;
@@ -134,7 +135,7 @@ export default function Lights() {
         shadow-camera-bottom={-10}
         shadow-camera-left={-10}
       />
-      <ambientLight intensity={1} />
+      <ambientLight intensity={ENVINTENSITY} />
     </>
   );
 }

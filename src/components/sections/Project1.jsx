@@ -1,11 +1,11 @@
-import "../../style.scss";
 import Wall from "../Wall";
 import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
-import "./Project.scss";
 import npm from "../../assets/npm.png";
 import annotate from "../../assets/annotate.png";
 import Bench from "../Bench";
 import { ORANGE } from "../../Gallery";
+import MyImage from "../MyImage";
+import MyText, { FONT } from "../MyText";
 
 export default function Project1({ width }) {
   return (
@@ -20,24 +20,33 @@ export default function Project1({ width }) {
         depth={subSection[SECNAME.NPM][0]}
         colour={ORANGE}
       >
-        <div className="section-detail project-section">
-          <div className="project-title">
-            <div className="project-subtitle">
-              <img src={npm} alt="" />
-              <h1>Simple Annotate</h1>
-              <a
-                target="_blank"
-                href="https://www.npmjs.com/package/simple-annotate-zsj"
-              >
-                @www.npmjs.com
-              </a>
-              <h4>
-                - A react component library that allows people to annotate and
-                measure images with svg lines
-              </h4>
-            </div>
-          </div>
-        </div>
+        <MyImage scale={[1, 0.39]} src={npm} position={[-0.08, 0.2]} />
+        <MyText
+          url={"https://www.npmjs.com/package/simple-annotate-zsj"}
+          width={1.2}
+          size={0.1}
+          font={FONT.Gin}
+          position={[-0.58, -0.12]}
+        >
+          Simple Annotator
+        </MyText>
+        <MyText
+          url={"https://www.npmjs.com/package/simple-annotate-zsj"}
+          size={0.1}
+          font={FONT.Reg}
+          position={[-0.58, -0.24]}
+        >
+          @npmjs.com
+        </MyText>
+        <MyText
+          width={1.22}
+          size={0.09}
+          font={FONT.Story}
+          position={[-0.58, -0.44]}
+        >
+          - A react component library that enables you to annotate and measure
+          images with svg lines
+        </MyText>
       </Wall>
       <Wall
         galleryWidth={width}
@@ -45,15 +54,23 @@ export default function Project1({ width }) {
         depth={subSection[SECNAME.NPM][1]}
         colour={ORANGE}
       >
-        <div className="section-detail project-section">
-          <img id="annotate" src={annotate} alt="" />
-          <div className="pic-desc">
-            <ul>
-              <li>Supports line annotation with number of pixels as unit</li>
-              <li>Supports image zooming, scaling and panning</li>
-            </ul>
-          </div>
-        </div>
+        <MyImage scale={[1.2, 0.64]} src={annotate} position={[0, 0.24]} />
+        <MyText
+          width={1.2}
+          size={0.09}
+          font={FONT.Story}
+          position={[-0.59, -0.24]}
+        >
+          - Line annotation with number of pixels as unit
+        </MyText>
+        <MyText
+          width={1.2}
+          size={0.09}
+          font={FONT.Story}
+          position={[-0.59, -0.44]}
+        >
+          - Image zooming, scaling and panning
+        </MyText>
       </Wall>
     </>
   );

@@ -65,7 +65,11 @@ export default function Playground({ length, width }) {
         <mesh position={[0, 1, length / 2 - 3.8]} rotation-x={Math.PI}>
           <planeGeometry args={[width, 2]} />
         </mesh>
-        <mesh material={wallMaterial} position={[0, 1, length / -2]}>
+        <mesh
+          receiveShadow
+          material={wallMaterial}
+          position={[0, 1, length / -2]}
+        >
           <planeGeometry args={[width, 2]} />
         </mesh>
       </RigidBody>

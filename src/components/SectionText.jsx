@@ -24,9 +24,12 @@ export default function SectionText({ text, size, colour, depth }) {
               material={
                 new MeshStandardMaterial({
                   color: colour,
+                  emissive: colour,
+                  emissiveIntensity: 0.5,
                   flatShading: true,
                 })
               }
+              
               castShadow
               height={size * 0.5}
               size={size}

@@ -17,14 +17,14 @@ import Statue from "./components/Statue.jsx";
 import FloorLamp from "./components/FloorLamp.jsx";
 
 const GALLERYWIDTH = 4;
-const GALLERYLENGTH = 57;
-export const PURPLE = "#a080ff";
-export const PINK = "#ff629c";
-export const ORANGE = "#fca36b";
+const GALLERYLENGTH = 60;
+export const PURPLE = "mediumpurple";
+export const PINK = "#EA4D82";
+export const ORANGE = "#ff924f";
 
-export const statuePurple = "#e1d0ff";
-export const statuePink = "#ffd4f3";
-export const statueOrange = "#ffe0d4";
+export const statuePurple = "#e8daff";
+export const statuePink = "#ffe2f7";
+export const statueOrange = "#ffe8de";
 
 export default function Gallery() {
   const { nodes } = useGLTF("/12sculptures.gltf");
@@ -39,7 +39,7 @@ export default function Gallery() {
         <Playground width={GALLERYWIDTH} length={GALLERYLENGTH} />
         <Statue
           position={[-0.5, 0, -3.4]}
-          color={"#f0f0f0"}
+          color={"#f7f7f7"}
           rotation={0.8}
           baseX={0.03}
           scale={0.012}
@@ -141,6 +141,7 @@ export default function Gallery() {
         <Project1 width={GALLERYWIDTH} />
 
         {/* Last Wall Section */}
+        
         <Info depth={GALLERYLENGTH} />
       </Physics>
     </>

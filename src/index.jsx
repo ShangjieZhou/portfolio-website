@@ -10,6 +10,8 @@ import Gallery from "./Gallery.jsx";
 import Interface from "./components/Interface.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
+import { Suspense } from "react";
+import LoadingPage from "./components/LoadingPage.jsx";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
@@ -23,20 +25,22 @@ root.render(
         { name: "rightward", keys: ["ArrowRight", "KeyD"] },
       ]}
     >
-      <div id="main-theme">
-        <Canvas
-          shadows
-          camera={{
-            fov: 45,
-            near: 0.1,
-            far: 100,
-            position: [0, 2, 6],
-          }}
-        >
-          <Gallery />
-        </Canvas>
-      </div>
-      <Interface />
+      <Suspense fallback={LoadingPage}>
+        <div id="main-theme">
+          <Canvas
+            shadows
+            camera={{
+              fov: 45,
+              near: 0.1,
+              far: 100,
+              position: [0, 2, 6],
+            }}
+          >
+            <Gallery />
+          </Canvas>
+        </div>
+        <Interface />
+      </Suspense>
     </KeyboardControls>
   </Provider>
 );

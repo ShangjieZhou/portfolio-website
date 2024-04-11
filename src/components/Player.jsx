@@ -1,7 +1,7 @@
 import { RigidBody } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,6 +20,15 @@ export default function Player({}) {
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
   const playerPos = useSelector((state) => state.gallery.playerPosition);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    let cameraPosition = new THREE.Vector3(
+      playerPos[0],
+      playerPos[1],
+      playerPos[2]
+    );
+    body.current?.setTranslation(cameraPosition, true);
+  }, [playerPos]);
 
   useFrame((state, delta) => {
     if (body.current === null) {
@@ -66,7 +75,7 @@ export default function Player({}) {
           (sideMap[key] === -1 && bodyPosition.x < 0))
       ) {
         const camPosX = sideMap[key] * -2.8;
-        const camTargetX = sideMap[key] * 1.5;
+        const camTargetX = sideMap[key] * 2;
         const camZ = Math.max(value.at(-1), Math.min(bodyPosition.z, value[0]));
         cameraPosition = new THREE.Vector3(camPosX, 0.85, camZ);
         cameraTarget = new THREE.Vector3(camTargetX, 1, camZ);
@@ -134,7 +143,7 @@ export default function Player({}) {
     >
       <mesh castShadow>
         <icosahedronGeometry args={[0.18, 1]} />
-        <meshStandardMaterial flatShading color="#DDDDDD" />
+        <meshStandardMaterial flatShading color="#fbfbfb" />
       </mesh>
     </RigidBody>
   );

@@ -1,11 +1,11 @@
-import "../../style.scss";
 import Wall from "../Wall";
 import unsw from "../../assets/unsw.png";
 import grad from "../../assets/grad.jpeg";
 import { subSection, SECNAME } from "../../features/gallery/gallerySlice";
-import "./Education.scss";
 import Bench from "../Bench";
 import { PINK } from "../../Gallery";
+import MyImage from "../MyImage";
+import MyText, { FONT } from "../MyText";
 
 export default function Education1({ width }) {
   return (
@@ -20,18 +20,26 @@ export default function Education1({ width }) {
         depth={subSection[SECNAME.UNI][0]}
         colour={PINK}
       >
-        <div className="section-detail education-section">
-          <img src={unsw} alt="" />
-          <div className="school-title">
-            <div className="school-subtitle">
-              <h1>Bachelor of Software Engineering (Honours)</h1>
-              <a target="_blank" href="https://www.linkedin.com/school/unsw/">
-                @University of New South Wales
-              </a>
-              <h4>Feb 2018 - Feb 2023</h4>
-            </div>
-          </div>
-        </div>
+        <MyImage scale={[0.8, 0.8]} src={unsw} position={[0, 0.24]} />
+        <MyText
+          width={1.7}
+          size={0.09}
+          font={FONT.Gin}
+          position={[-0.58, -0.25]}
+        >
+          Software Engineering (Honours)
+        </MyText>
+        <MyText
+          url={"https://www.linkedin.com/school/unsw/"}
+          size={0.1}
+          font={FONT.Reg}
+          position={[-0.58, -0.4]}
+        >
+          @University of New South Wales
+        </MyText>
+        <MyText size={0.09} font={FONT.Story} position={[-0.58, -0.51]}>
+          Feb 2018 - Feb 2023
+        </MyText>
       </Wall>
       <Wall
         galleryWidth={width}
@@ -39,14 +47,16 @@ export default function Education1({ width }) {
         depth={subSection[SECNAME.UNI][1]}
         colour={PINK}
       >
-        <div className="section-detail education-section">
-          <img id="grad" src={grad} alt="" />
-          <ul>
-            <li>First Class Honours</li>
-            <li>Dean's Honours List of 2021</li>
-            <li>Dean's Honours List of 2022</li>
-          </ul>
-        </div>
+        <MyImage scale={[0.84, 0.84]} src={grad} position={[0, 0.16]} />
+        <MyText size={0.09} font={FONT.Story} position={[-0.55, -0.36]}>
+          First Class Honours
+        </MyText>
+        <MyText size={0.09} font={FONT.Story} position={[-0.55, -0.46]}>
+          Dean's Honours List of 2021
+        </MyText>
+        <MyText size={0.09} font={FONT.Story} position={[-0.55, -0.56]}>
+          Dean's Honours List of 2022
+        </MyText>
       </Wall>
     </>
   );
