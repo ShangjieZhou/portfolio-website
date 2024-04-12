@@ -58,16 +58,16 @@ export default function Project1({ width }) {
         <MyText
           width={1.2}
           size={0.09}
-          font={FONT.Story}
-          position={[-0.59, -0.24]}
+          font={FONT.Cute}
+          position={[-0.55, -0.24]}
         >
           - Line annotation with number of pixels as unit
         </MyText>
         <MyText
           width={1.2}
           size={0.09}
-          font={FONT.Story}
-          position={[-0.59, -0.44]}
+          font={FONT.Cute}
+          position={[-0.55, -0.44]}
         >
           - Image zooming, scaling and panning
         </MyText>

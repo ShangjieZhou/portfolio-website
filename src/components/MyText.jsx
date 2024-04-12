@@ -6,6 +6,7 @@ export const FONT = {
   Story: "/lightStories.otf",
   Reg: "/bebas-neue-v9-latin-regular.woff",
   Times: "/newyork.ttf",
+  Cute: "/cute.ttf"
 };
 
 export default function MyText({

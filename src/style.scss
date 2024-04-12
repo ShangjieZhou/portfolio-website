@@ -6,7 +6,6 @@ body,
   left: 0;
   width: 100%;
   height: 100%;
-  background: ivory;
 
   h1,
   h2,
@@ -18,6 +17,25 @@ body,
   li {
     margin: 0;
     font-family: system-ui;
+  }
+}
+
+#loading-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  #puff-box {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
   }
 }
 
@@ -123,7 +141,7 @@ body,
       &.highlight::after {
         content: "<";
         position: absolute;
-        right: 1rem
+        right: 1rem;
       }
     }
 

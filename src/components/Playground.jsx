@@ -19,6 +19,7 @@ function IntroText({ position, text, color = "white", size = 10 }) {
       <Float speed={2} floatIntensity={0.4} rotationIntensity={0.25}>
         <Text
           fontSize={size}
+          // font="/lightStories.otf"
           font="/bebas-neue-v9-latin-regular.woff"
           scale={[0.5, 0.4, 1]}
           maxWidth={2}
@@ -83,7 +84,7 @@ export default function Playground({ length, width }) {
       <IntroText
         size={1}
         position={[0.6, 0, length / 2 - 4.3]}
-        text={"Shangjie Zhou"}
+        text={"SHANGJIE ZHOU"}
       />
     </group>
   );

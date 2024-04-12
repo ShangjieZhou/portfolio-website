@@ -28,7 +28,7 @@ export default function WorkExp2({ width }) {
         colour={PURPLE}
       >
         <MyImage scale={[0.8, 0.8]} src={navbit} position={[0, 0.2]} />
-        <MyText size={0.1} font={FONT.Gin} position={[-0.58, -0.3]}>
+        <MyText size={0.11} font={FONT.Cute} position={[-0.58, -0.3]}>
           Frontend Developer
         </MyText>
         <MyText url={"https://www.linkedin.com/company/navbit-surgical/"} size={0.1} font={FONT.Reg} position={[-0.58, -0.4]}>
@@ -51,7 +51,7 @@ export default function WorkExp2({ width }) {
         <MyText
           width={1.2}
           size={0.09}
-          font={FONT.Story}
+          font={FONT.Cute}
           position={[-0.55, -0.38]}
         >
           In charge of developing the frontend of a Web App that supports SVG

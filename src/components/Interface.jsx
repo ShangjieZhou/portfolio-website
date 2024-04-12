@@ -11,10 +11,11 @@ export default function Interface() {
   const dispatch = useDispatch();
   const [subscribeKeys, _] = useKeyboardControls();
   const currSection = useSelector((state) => state.gallery.playerSection);
-  const [showHint, setShowHint] = useState(true);
+  const [showHint, setShowHint] = useState(false);
   const timerRef = useRef();
 
   useEffect(() => {
+    prepareHint(2000);
     window.addEventListener(
       "keydown",
       (e) => {
@@ -31,17 +32,17 @@ export default function Interface() {
     return subscribeKeys(
       (state) =>
         state.forward || state.backward || state.leftward || state.rightward,
-      (_) => {
-        if (timerRef.current !== null) {
-          clearTimeout(timerRef.current);
-        }
-        setShowHint(false);
-        timerRef.current = setTimeout(() => {
-          setShowHint(true);
-        }, 10000);
-      }
+      (_) => prepareHint(10000)
     );
   }, []);
+
+  const prepareHint = (interval) => {
+    clearTimeout(timerRef.current);
+    setShowHint(false);
+    timerRef.current = setTimeout(() => {
+      setShowHint(true);
+    }, interval);
+  };
 
   const moveTo = (subSection) => {
     dispatch(movePlayerTo(subSection));

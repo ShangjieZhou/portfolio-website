@@ -13,6 +13,7 @@
     "vite": "^4.5.0"
   },
   "dependencies": {
+    "@agney/react-loading": "^0.1.2",
     "@react-three/drei": "^9.88.7",
     "@react-three/fiber": "^8.15.8",
     "@react-three/rapier": "1.1",
@@ -20,7 +21,6 @@
     "r3f-perf": "^7.1.2",
     "react": "18.2",
     "react-dom": "18.2",
-    "react-icons": "^5.0.1",
     "react-redux": "^9.1.0",
     "react-transition-group": "^4.4.5",
     "three": "^0.158.0"

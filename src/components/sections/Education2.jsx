@@ -35,8 +35,8 @@ export default function Education2({ width }) {
         <MyImage scale={[0.7, 0.7]} src={hills} position={[0, 0.24]} />
         <MyText
           width={1.2}
-          size={0.08}
-          font={FONT.Gin}
+          size={0.09}
+          font={FONT.Cute}
           position={[-0.58, -0.22]}
         >
           High School (Year 10-12)
@@ -60,19 +60,19 @@ export default function Education2({ width }) {
         colour={PINK}
       >
         <MyImage scale={[1, 0.64]} src={group} position={[0, 0.24]} />
-        <MyText size={0.09} font={FONT.Story} position={[-0.55, -0.2]}>
+        <MyText size={0.09} font={FONT.Cute} position={[-0.55, -0.2]}>
           - HSC ATAR of 96.5
         </MyText>
         <MyText
           width={1.2}
           size={0.09}
-          font={FONT.Story}
+          font={FONT.Cute}
           position={[-0.55, -0.4]}
         >
           - Studied Math Extension 1 & 2, English General, Physics and Chemistry
         </MyText>
-        <MyText size={0.09} font={FONT.Story} position={[-0.55, -0.6]}>
-          - Met a lot of lovely people here
+        <MyText width={1.2} size={0.09} font={FONT.Cute} position={[-0.55, -0.6]}>
+          - Met a lot of lovely people
         </MyText>
       </Wall>
     </>

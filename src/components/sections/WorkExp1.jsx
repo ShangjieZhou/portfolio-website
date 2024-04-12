@@ -32,7 +32,7 @@ export default function WorkExp1({ width }) {
         colour={PURPLE}
       >
         <MyImage scale={[0.6, 0.6]} position={[0, 0.1, 0.06]} src={bukaLogo} />
-        <MyText size={0.1} font={FONT.Gin} position={[-0.55, -0.3]}>
+        <MyText size={0.11} font={FONT.Cute} position={[-0.55, -0.3]}>
           Software Engineer
         </MyText>
         <MyText
@@ -55,10 +55,10 @@ export default function WorkExp1({ width }) {
       >
         <MyImage src={bukaPic} scale={[1.1, 0.62]} position={[0, 0.2, 0.06]} />
         <MyText
-          width={1.1}
+          width={1.2}
           size={0.09}
-          font={FONT.Times}
-          position={[-0.55, -0.4]}
+          font={FONT.Cute}
+          position={[-0.6, -0.4]}
         >
           Bukalapak is an Indonesian e-commerce tech unicorn with over 100
           million users and 13.5 million MSMES.
@@ -76,14 +76,13 @@ export default function WorkExp1({ width }) {
         <MyImage src={python} scale={[0.6, 0.18]} position={[-0.26, 0.03]} />
         <MyImage src={kafka} scale={[0.46, 0.21]} position={[0.32, 0.05]} />
         <MyText
-          width={1.12}
+          width={1.2}
           size={0.09}
-          font={FONT.Story}
-          position={[-0.55, -0.36]}
+          font={FONT.Cute}
+          position={[-0.58, -0.36]}
         >
-          In Trust-and-Safety team, I develope and maintain complex
-          Microservices that support the reliability of our e-commerce platforms
-          internally
+          We developed complex Microservices that support the reliability of our
+          e-commerce platforms internally
         </MyText>
       </Wall>
       <Wall
@@ -96,12 +95,12 @@ export default function WorkExp1({ width }) {
         <MyImage src={terra} scale={[0.52, 0.12]} position={[-0.3, 0]} />
         <MyImage src={azure} scale={[0.54, 0.15]} position={[0.3, 0]} />
         <MyText
-          width={1.12}
+          width={1.2}
           size={0.09}
-          font={FONT.Story}
-          position={[-0.55, -0.36]}
+          font={FONT.Cute}
+          position={[-0.58, -0.36]}
         >
-          Using modern technologies, we build infrastructure that can flexibly
+          We build infrastructure that can flexibly
           handle millions of requests every day.
         </MyText>
       </Wall>
