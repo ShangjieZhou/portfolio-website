@@ -13,6 +13,13 @@ export default function Interface() {
   const currSection = useSelector((state) => state.gallery.playerSection);
   const [showHint, setShowHint] = useState(false);
   const timerRef = useRef();
+  const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    if (currSection !== SECNAME.START && showHint === false) {
+      setShowMenu(true);
+    }
+  }, [currSection]);
 
   useEffect(() => {
     prepareHint(2000);
@@ -65,74 +72,76 @@ export default function Interface() {
         </div>
       )}
 
-      <div id="content-table" className={collapsed ? "hide" : ""}>
-        <div className="foldable">
-          <div className="start section">
-            <h1>Gallery Entrance</h1>
-            <p
-              className={highlight(SECNAME.START)}
-              onClick={() => moveTo(SECNAME.START)}
-            >
-              Shangjie The Thinker
-            </p>
+      {showMenu && (
+        <div id="content-table" className={collapsed ? "hide" : ""}>
+          <div className="foldable">
+            <div className="start section">
+              <h1>Gallery Entrance</h1>
+              <p
+                className={highlight(SECNAME.START)}
+                onClick={() => moveTo(SECNAME.START)}
+              >
+                Shangjie The Thinker
+              </p>
+            </div>
+            <div className="experience section">
+              <h1>My Experience</h1>
+              <p
+                className={highlight(SECNAME.BUKA)}
+                onClick={() => moveTo(SECNAME.BUKA)}
+              >
+                Bukalapak
+              </p>
+              <p
+                className={highlight(SECNAME.NAVBIT)}
+                onClick={() => moveTo(SECNAME.NAVBIT)}
+              >
+                Navbit
+              </p>
+            </div>
+            <div className="education section">
+              <h1>My Education</h1>
+              <p
+                className={highlight(SECNAME.UNI)}
+                onClick={() => moveTo(SECNAME.UNI)}
+              >
+                University of New South Wales
+              </p>
+              <p
+                className={highlight(SECNAME.HIGHSCHOOL)}
+                onClick={() => moveTo(SECNAME.HIGHSCHOOL)}
+              >
+                Hills Adventist College
+              </p>
+            </div>
+            <div className="project section">
+              <h1>Personal Projects</h1>
+              <p
+                className={highlight(SECNAME.NPM)}
+                onClick={() => moveTo(SECNAME.NPM)}
+              >
+                Simple Annotator
+              </p>
+            </div>
+            <div className="end section">
+              <h1>Gallery Back Wall</h1>
+              <p
+                className={highlight(SECNAME.END)}
+                onClick={() => moveTo(SECNAME.END)}
+              >
+                The Boxes
+              </p>
+            </div>
           </div>
-          <div className="experience section">
-            <h1>My Experience</h1>
-            <p
-              className={highlight(SECNAME.BUKA)}
-              onClick={() => moveTo(SECNAME.BUKA)}
-            >
-              Bukalapak
-            </p>
-            <p
-              className={highlight(SECNAME.NAVBIT)}
-              onClick={() => moveTo(SECNAME.NAVBIT)}
-            >
-              Navbit
-            </p>
-          </div>
-          <div className="education section">
-            <h1>My Education</h1>
-            <p
-              className={highlight(SECNAME.UNI)}
-              onClick={() => moveTo(SECNAME.UNI)}
-            >
-              University of New South Wales
-            </p>
-            <p
-              className={highlight(SECNAME.HIGHSCHOOL)}
-              onClick={() => moveTo(SECNAME.HIGHSCHOOL)}
-            >
-              Hills Adventist College
-            </p>
-          </div>
-          <div className="project section">
-            <h1>Personal Projects</h1>
-            <p
-              className={highlight(SECNAME.NPM)}
-              onClick={() => moveTo(SECNAME.NPM)}
-            >
-              Simple Annotator
-            </p>
-          </div>
-          <div className="end section">
-            <h1>Gallery Back Wall</h1>
-            <p
-              className={highlight(SECNAME.END)}
-              onClick={() => moveTo(SECNAME.END)}
-            >
-              The Boxes
-            </p>
-          </div>
+          <button id="fold-btn" onClick={() => setCollapsed(!collapsed)}>
+            <img
+              className={collapsed ? "arrow-btn" : "arrow-btn flipped"}
+              src={arrowIcon}
+              alt=""
+            />
+          </button>
         </div>
-        <button id="fold-btn" onClick={() => setCollapsed(!collapsed)}>
-          <img
-            className={collapsed ? "arrow-btn" : "arrow-btn flipped"}
-            src={arrowIcon}
-            alt=""
-          />
-        </button>
-      </div>
+      )}
     </div>
   );
 }
