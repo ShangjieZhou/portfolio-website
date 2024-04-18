@@ -14,10 +14,15 @@ export default function Interface() {
   const [showHint, setShowHint] = useState(false);
   const timerRef = useRef();
   const [showMenu, setShowMenu] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
 
   useEffect(() => {
-    if (currSection !== SECNAME.START && showHint === false) {
+    if (currSection !== SECNAME.START && firstTime) {
       setShowMenu(true);
+      setTimeout(() => {
+        setCollapsed(false);
+      }, 500);
+      setFirstTime(false);
     }
   }, [currSection]);
 
