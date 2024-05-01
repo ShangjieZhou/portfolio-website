@@ -109,7 +109,7 @@ export default function Info({ depth }) {
           <MyImage src={git} scale={[0.3, 0.3]} position={[0, 0, 0.26]} />
         </mesh>
         <mesh
-          onClick={() => goto("https://shangjie-zhou-resume.tiiny.site/")}
+          onClick={() => goto("https://shangjie-zhou.tiiny.site/")}
           onPointerOut={mouseOut}
           onPointerMove={() =>
             setSpotlight(new Vector3(-0.3, 0.98, 2.2 - depth))
